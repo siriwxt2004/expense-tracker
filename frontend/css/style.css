@@ -1,0 +1,436 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --paper: #EEF0EA;
+  --paper-raised: #F7F8F3;
+  --ink: #1B2620;
+  --ink-soft: #55605A;
+  --line: #D8D3C4;
+  --line-strong: #B9B29C;
+  --income: #2F6F4E;
+  --income-soft: #E4EEE7;
+  --expense: #B5472F;
+  --expense-soft: #F5E6E1;
+  --gold: #C9A227;
+
+  --font-display: 'Kanit', Georgia, serif;
+  --font-body: 'Kanit', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 3px;
+  --shadow-card: 0 1px 0 var(--line);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+a { color: var(--income); }
+
+/* ---------- ฟอร์มพื้นฐาน ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.field span {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--income);
+  outline-offset: 1px;
+  border-color: var(--income);
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 11px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover { background: #2b3a32; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.btn-ghost:hover { background: var(--paper-raised); }
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn-icon:hover { border-color: var(--line-strong); }
+.btn-icon--danger { color: var(--expense); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+}
+
+/* ============================================
+   หน้า Login / Register
+   ============================================ */
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-mark {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.auth-mark__ledger {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+}
+.auth-mark__sub {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.auth-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.auth-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.auth-tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--income);
+}
+
+.auth-form .btn { width: 100%; margin-top: 6px; }
+
+.auth-message {
+  background: var(--expense-soft);
+  color: var(--expense);
+  border: 1px solid var(--expense);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+.auth-message.is-success {
+  background: var(--income-soft);
+  color: var(--income);
+  border-color: var(--income);
+}
+
+/* ============================================
+   Dashboard layout
+   ============================================ */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+}
+
+.sidebar__brand {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.sidebar__nav { flex: 1; }
+
+.sidebar__user {
+  display: block;
+  font-size: 13px;
+  color: #B9C4BC;
+  border-top: 1px solid #3A473F;
+  padding-top: 14px;
+}
+
+.sidebar__logout {
+  color: var(--paper);
+  border-color: #3A473F;
+}
+.sidebar__logout:hover { background: #26332C; }
+
+.main {
+  flex: 1;
+  padding: 32px 40px 56px;
+  max-width: 1100px;
+}
+
+.main__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.main__header h1 { font-size: 26px; }
+.main__date-today { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+/* ---------- แถบสรุปยอด ---------- */
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.summary-tile {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-tile__label {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.summary-tile__value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-tile__value--income { color: var(--income); }
+.summary-tile__value--expense { color: var(--expense); }
+.summary-tile--balance { border-left-color: var(--gold); }
+
+/* ---------- Panels ---------- */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.panel {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.panel--wide { grid-column: 1 / -1; }
+
+.panel__title {
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.tx-form__row {
+  display: flex;
+  gap: 14px;
+}
+.tx-form__row .field { min-width: 0; }
+
+.tx-form__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 14px;
+}
+.filters__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.chart-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  position: relative;
+}
+.chart-empty {
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ---------- ตารางรายการ ---------- */
+.table-wrap { overflow-x: auto; }
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger-table th {
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+
+.ledger-table td {
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.ledger-table tr:hover td { background: var(--paper); }
+
+.align-right { text-align: right; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag--income { background: var(--income-soft); color: var(--income); }
+.tag--expense { background: var(--expense-soft); color: var(--expense); }
+
+.amount--income { color: var(--income); font-weight: 600; }
+.amount--expense { color: var(--expense); font-weight: 600; }
+
+.row-actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+.table-empty {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 24px 0;
+}
+
+/* ============================================
+   Responsive: มือถือ / แท็บเล็ต
+   ============================================ */
+@media (max-width: 900px) {
+  .content-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .app-shell { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 20px;
+    gap: 16px;
+  }
+  .sidebar__brand { margin-bottom: 0; }
+  .sidebar__nav { flex: 1; display: flex; align-items: center; }
+  .sidebar__user { border-top: none; padding-top: 0; }
+  .sidebar__logout { padding: 8px 14px; }
+
+  .main { padding: 20px 16px 48px; }
+
+  .summary-row { grid-template-columns: 1fr; }
+
+  .tx-form__row { flex-direction: column; gap: 0; }
+
+  .filters { grid-template-columns: 1fr; }
+
+  .ledger-table th:nth-child(4),
+  .ledger-table td:nth-child(4) { display: none; } /* ซ่อนคอลัมน์โน้ตบนจอเล็ก */
+}
