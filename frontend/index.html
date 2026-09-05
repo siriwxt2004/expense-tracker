@@ -6,56 +6,55 @@
 <title>เข้าสู่ระบบ — สมุดบัญชี</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="auth-body">
-
-  <main class="auth-shell">
-    <div class="auth-mark">
-      <span class="auth-mark__ledger">สมุดบัญชี</span>
-      <span class="auth-mark__sub">บันทึกรายรับ-รายจ่ายของคุณ</span>
-    </div>
-
-    <div class="auth-card">
-      <!-- แถบสลับ Login / Register -->
-      <div class="auth-tabs" role="tablist">
-        <button class="auth-tab is-active" data-target="login-form" role="tab">เข้าสู่ระบบ</button>
-        <button class="auth-tab" data-target="register-form" role="tab">สมัครสมาชิก</button>
+  <body class="auth-body">
+    <main class="auth-shell">
+      <div class="auth-mark">
+        <span class="auth-mark__ledger">สมุดบัญชี</span>
+        <span class="auth-mark__sub">บันทึกรายรับ-รายจ่ายของคุณ</span>
       </div>
 
-      <p class="auth-message" id="auth-message" hidden></p>
+      <div class="auth-card">
+        <!-- แถบสลับ Login / Register -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab is-active" data-target="login-form" role="tab">เข้าสู่ระบบ</button>
+          <button class="auth-tab" data-target="register-form" role="tab">สมัครสมาชิก</button>
+        </div>
 
-      <!-- ฟอร์มเข้าสู่ระบบ -->
-      <form id="login-form" class="auth-form">
-        <label class="field">
-          <span>ชื่อผู้ใช้หรืออีเมล</span>
-          <input type="text" id="login-username" required autocomplete="username">
-        </label>
-        <label class="field">
-          <span>รหัสผ่าน</span>
-          <input type="password" id="login-password" required autocomplete="current-password">
-        </label>
-        <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
-      </form>
+        <p class="auth-message" id="auth-message" hidden></p>
 
-      <!-- ฟอร์มสมัครสมาชิก -->
-      <form id="register-form" class="auth-form" hidden>
-        <label class="field">
-          <span>ชื่อผู้ใช้</span>
-          <input type="text" id="register-username" required minlength="3" autocomplete="username">
-        </label>
-        <label class="field">
-          <span>อีเมล</span>
-          <input type="email" id="register-email" required autocomplete="email">
-        </label>
-        <label class="field">
-          <span>รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</span>
-          <input type="password" id="register-password" required minlength="6" autocomplete="new-password">
-        </label>
-        <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
-      </form>
-    </div>
-  </main>
+        <!-- ฟอร์มเข้าสู่ระบบ -->
+        <form id="login-form" class="auth-form">
+          <label class="field">
+            <span>ชื่อผู้ใช้หรืออีเมล</span>
+            <input type="text" id="login-username" required autocomplete="username">
+          </label>
+          <label class="field">
+            <span>รหัสผ่าน</span>
+            <input type="password" id="login-password" required autocomplete="current-password">
+          </label>
+          <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+        </form>
 
-  <script src="js/api.js"></script>
-  <script src="js/auth.js"></script>
-</body>
+        <!-- ฟอร์มสมัครสมาชิก -->
+        <form id="register-form" class="auth-form" hidden>
+          <label class="field">
+            <span>ชื่อผู้ใช้</span>
+            <input type="text" id="register-username" required minlength="3" autocomplete="username">
+          </label>
+          <label class="field">
+            <span>อีเมล</span>
+            <input type="email" id="register-email" required autocomplete="email">
+          </label>
+          <label class="field">
+            <span>รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</span>
+            <input type="password" id="register-password" required minlength="6" autocomplete="new-password">
+          </label>
+          <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
 </html>
