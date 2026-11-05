@@ -1,60 +1,122 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เข้าสู่ระบบ — สมุดบัญชี</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ / สมัครสมาชิก — สมุดบัญชี SmartLedger</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-  <body class="auth-body">
-    <main class="auth-shell">
-      <div class="auth-mark">
-        <span class="auth-mark__ledger">สมุดบัญชี</span>
-        <span class="auth-mark__sub">บันทึกรายรับ-รายจ่ายของคุณ</span>
+<body class="auth-body">
+
+  <main class="auth-shell">
+    <div class="auth-mark">
+      <div class="auth-logo-badge">
+        <i data-lucide="wallet-cards" style="width: 28px; height: 28px;"></i>
+      </div>
+      <span class="auth-mark__ledger">สมุดบัญชี</span>
+      <span class="auth-mark__sub">SmartLedger — จัดการรายรับ-รายจ่ายของคุณอย่างชาญฉลาด</span>
+    </div>
+
+    <div class="auth-card">
+      <!-- แถบสลับ Login / Register -->
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab is-active" data-target="login-form" role="tab">
+          <i data-lucide="log-in" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>
+          เข้าสู่ระบบ
+        </button>
+        <button class="auth-tab" data-target="register-form" role="tab">
+          <i data-lucide="user-plus" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>
+          สมัครสมาชิก
+        </button>
       </div>
 
-      <div class="auth-card">
-        <!-- แถบสลับ Login / Register -->
-        <div class="auth-tabs" role="tablist">
-          <button class="auth-tab is-active" data-target="login-form" role="tab">เข้าสู่ระบบ</button>
-          <button class="auth-tab" data-target="register-form" role="tab">สมัครสมาชิก</button>
-        </div>
+      <div class="auth-message" id="auth-message" hidden></div>
 
-        <p class="auth-message" id="auth-message" hidden></p>
+      <!-- ฟอร์มเข้าสู่ระบบ -->
+      <form id="login-form" class="auth-form">
+        <label class="field">
+          <span>
+            <i data-lucide="user" style="width: 15px; height: 15px;"></i>
+            ชื่อผู้ใช้หรืออีเมล
+          </span>
+          <input type="text" id="login-username" required autocomplete="username" placeholder="กรอก username หรือ อีเมล">
+        </label>
 
-        <!-- ฟอร์มเข้าสู่ระบบ -->
-        <form id="login-form" class="auth-form">
-          <label class="field">
-            <span>ชื่อผู้ใช้หรืออีเมล</span>
-            <input type="text" id="login-username" required autocomplete="username">
-          </label>
-          <label class="field">
-            <span>รหัสผ่าน</span>
-            <input type="password" id="login-password" required autocomplete="current-password">
-          </label>
-          <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
-        </form>
+        <label class="field">
+          <span>
+            <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
+            รหัสผ่าน
+          </span>
+          <div class="password-field-wrap">
+            <input type="password" id="login-password" required autocomplete="current-password" placeholder="••••••••">
+            <button type="button" class="password-toggle-btn" aria-label="แสดง/ซ่อนรหัสผ่าน" data-target-input="login-password">
+              <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+            </button>
+          </div>
+        </label>
 
-        <!-- ฟอร์มสมัครสมาชิก -->
-        <form id="register-form" class="auth-form" hidden>
-          <label class="field">
-            <span>ชื่อผู้ใช้</span>
-            <input type="text" id="register-username" required minlength="3" autocomplete="username">
-          </label>
-          <label class="field">
-            <span>อีเมล</span>
-            <input type="email" id="register-email" required autocomplete="email">
-          </label>
-          <label class="field">
-            <span>รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</span>
-            <input type="password" id="register-password" required minlength="6" autocomplete="new-password">
-          </label>
-          <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
-        </form>
+        <button type="submit" class="btn btn-primary">
+          <span>เข้าสู่ระบบ</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
+      </form>
+
+      <!-- ฟอร์มสมัครสมาชิก -->
+      <form id="register-form" class="auth-form" hidden>
+        <label class="field">
+          <span>
+            <i data-lucide="user" style="width: 15px; height: 15px;"></i>
+            ชื่อผู้ใช้
+          </span>
+          <input type="text" id="register-username" required minlength="3" autocomplete="username" placeholder="เช่น somchai_d">
+        </label>
+
+        <label class="field">
+          <span>
+            <i data-lucide="mail" style="width: 15px; height: 15px;"></i>
+            อีเมล
+          </span>
+          <input type="email" id="register-email" required autocomplete="email" placeholder="example@mail.com">
+        </label>
+
+        <label class="field">
+          <span>
+            <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
+            รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)
+          </span>
+          <div class="password-field-wrap">
+            <input type="password" id="register-password" required minlength="6" autocomplete="new-password" placeholder="••••••••">
+            <button type="button" class="password-toggle-btn" aria-label="แสดง/ซ่อนรหัสผ่าน" data-target-input="register-password">
+              <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+            </button>
+          </div>
+        </label>
+
+        <button type="submit" class="btn btn-primary">
+          <span>สมัครสมาชิก</span>
+          <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="auth-features-bar">
+      <div class="auth-feature-item">
+        <i data-lucide="zap" style="width: 14px; height: 14px; color: #F59E0B;"></i>
+        <span>บันทึกรวดเร็ว</span>
       </div>
-    </main>
+      <div class="auth-feature-item">
+        <i data-lucide="pie-chart" style="width: 14px; height: 14px; color: #6366F1;"></i>
+        <span>วิเคราะห์รายจ่าย</span>
+      </div>
+      <div class="auth-feature-item">
+        <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #10B981;"></i>
+        <span>ข้อมูลปลอดภัย</span>
+      </div>
+    </div>
+  </main>
 
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-  </body>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
 </html>
